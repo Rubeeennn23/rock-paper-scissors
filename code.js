@@ -16,48 +16,93 @@ let drawSentence = `Try again, both showed ${playerChoice}`;
 let roundSentence;
 let playerCount = 0;
 let computerCount = 0;
-let round = 0;
-let result = `Player ${playerCount} vs Computer ${computerCount}`;
-let resultSentence = roundSentence + " - " + result;
+let roundResult;
 
 function roundPlay (playerChoice,computerChoice) {
     if (playerChoice === "rock" & computerChoice === "scissors") {
         roundSentence = winSentence
-        playerCount =+ 1
+        playerCount ++
     } else if (playerChoice === "rock" & computerChoice === "paper") {
         roundSentence = looseSentence
-        computerCount =+ 1
+        computerCount ++
     } else if (playerChoice === "rock" & computerChoice === "rock") {
        roundSentence = drawSentence
     } else if (playerChoice === "paper" & computerChoice === "rock") {
         roundSentence = winSentence
-        playerCount =+ 1
+        playerCount ++
     } else if (playerChoice === "paper" & computerChoice === "scissors") {
         roundSentence = looseSentence
-        computerCount =+ 1
+        computerCount ++
     } else if (playerChoice === "paper" & computerChoice === "paper") {
         roundSentence = drawSentence
     } else if (playerChoice === "scissors" & computerChoice === "paper") {
         roundSentence = winSentence
-        playerCount =+ 1
+        playerCount ++
     } else if (playerChoice === "scissors" & computerChoice === "rock") {
         roundSentence = looseSentence
-        computerCount =+ 1
+        computerCount ++
     } else {
         roundSentence = drawSentence
-    } return roundSentence+" - " + result
+    } return {
+        roundSentence,
+        playerCount,
+        computerCount
+    }
 }
 
- alert(roundPlay(playerChoice,computerChoice));
+
+
   
-// 4 - Write a new function called game(). Use the previous function inside of this one to play a 5 round game that keeps socre an reports a winner and looser at the end
+// 4 - Write a new function called game(). Use the previous function inside of this one to play a 5 round game that keeps the score an reports a winner and looser at the end
 // We don't know how to create loops right now, repeat the function 5 times. 
 // We can display the result using console log of each round and the winner in the end
 // Use prompt() to get the input from the user
-// Change the previous function if needed, specually the return value 
-// If needed, create more helper functions that could be usefull
+// Change the previous function if needed, specially the return value 
+// If needed, create more helper functions that could be useful
 
-//function game() {
-//    round(playerChoice,computerChoice)
+function game() {
 
-//}
+    roundResult = roundPlay(playerChoice,computerChoice,playerCount,computerCount);
+    console.log(roundResult);
+    alert(`Player ${playerCount} vs Computer ${computerCount}`)
+    computerChoice = getComputerChoice();
+    playerChoiceCase=prompt("Choose rock, paper or scissors:");
+    playerChoice = playerChoiceCase.toLowerCase();
+
+    roundResult = roundPlay(playerChoice,computerChoice,playerCount,computerCount);
+    console.log(roundResult)
+    alert(`Player ${playerCount} vs Computer ${computerCount}`)
+    computerChoice = getComputerChoice();
+    playerChoiceCase=prompt("Choose rock, paper or scissors:");
+    playerChoice = playerChoiceCase.toLowerCase();
+
+    roundResult = roundPlay(playerChoice,computerChoice,playerCount,computerCount);
+    console.log(roundResult)
+    alert(`Player ${playerCount} vs Computer ${computerCount}`)
+    computerChoice = getComputerChoice();
+    playerChoiceCase=prompt("Choose rock, paper or scissors:");
+    playerChoice = playerChoiceCase.toLowerCase();
+
+    roundResult = roundPlay(playerChoice,computerChoice,playerCount,computerCount);
+    console.log(roundResult)
+    alert(`Player ${playerCount} vs Computer ${computerCount}`)
+    computerChoice = getComputerChoice();
+    playerChoiceCase=prompt("Choose rock, paper or scissors:");
+    playerChoice = playerChoiceCase.toLowerCase();
+
+    roundResult = roundPlay(playerChoice,computerChoice,playerCount,computerCount);
+    console.log(roundResult)
+    alert(`Player ${playerCount} vs Computer ${computerCount}`)
+    if (playerCount > computerCount) {
+        alert("You win, you are the game master")
+    } else if (playerCount < computerCount) {
+        alert("You loose, try it again")
+    } else {
+        alert("You tie, you have to practice more")
+    } return {
+        playerCount, 
+        computerCount
+    }
+}
+
+console.log(game()); 
