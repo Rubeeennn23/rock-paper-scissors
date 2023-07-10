@@ -1,22 +1,19 @@
 // Rock paper scissors 
 // 1 - The computer selects one of the options randomly: Rock, Paper OR Scissors
-    const choice = ["rock","paper","scissors"];
-    let computerChoice = getComputerChoice();
-    function getComputerChoice() {
-        return choice[Math.floor(Math.random()*3)];
-    }
+
+function getComputerChoice() {
+    return choice[Math.floor(Math.random()*3)];
+}
+
 // 2 - The player selects one of the options: Rock, Paper OR Scissors - we should make it case-insensitive
-let playerChoiceCase=prompt("Choose rock, paper or scissors:");
-let playerChoice = playerChoiceCase.toLowerCase();
+
+/*let playerChoiceCase=prompt("Choose rock, paper or scissors:");
+let playerChoice = playerChoiceCase.toLowerCase();*/
+
+
+
 
 // 3 - Write a function that plays a single round of the game, the function should have 2 parameters: playerSelection and computerSelection
-let winSentence = `You win, ${playerChoice} wins ${computerChoice}`;
-let looseSentence = `You loose, ${computerChoice} wins ${playerChoice}`;
-let drawSentence = `Try again, both showed ${playerChoice}`;
-let roundSentence;
-let playerCount = 0;
-let computerCount = 0;
-let roundResult;
 
 function roundPlay (playerChoice,computerChoice) {
     if (playerChoice === "rock" & computerChoice === "scissors") {
@@ -48,11 +45,8 @@ function roundPlay (playerChoice,computerChoice) {
         playerCount,
         computerCount
     }
-}
+};
 
-
-
-  
 // 4 - Write a new function called game(). Use the previous function inside of this one to play a 5 round game that keeps the score an reports a winner and looser at the end
 // We don't know how to create loops right now, repeat the function 5 times. 
 // We can display the result using console log of each round and the winner in the end
@@ -60,7 +54,7 @@ function roundPlay (playerChoice,computerChoice) {
 // Change the previous function if needed, specially the return value 
 // If needed, create more helper functions that could be useful
 
-function game() {
+/*function game() {
 
     roundResult = roundPlay(playerChoice,computerChoice,playerCount,computerCount);
     console.log(roundResult);
@@ -105,4 +99,30 @@ function game() {
     }
 }
 
-console.log(game()); 
+console.log(game()); */
+
+const choice = ["rock","paper","scissors"];
+let computerChoice = getComputerChoice();
+let playerChoice='';
+let winSentence = `You win, ${playerChoice} wins ${computerChoice}`;
+let looseSentence = `You loose, ${computerChoice} wins ${playerChoice}`;
+let drawSentence = `Try again, both showed ${playerChoice}`;
+let roundSentence;
+let playerCount = 0;
+let computerCount = 0;
+let roundResult;
+
+const rockButton = document.querySelector(".rock");
+rockButton.addEventListener("click",(e) => {
+    return console.log(roundPlay("rock",computerChoice));
+});
+
+const paperButton = document.querySelector(".paper");
+paperButton.addEventListener("click",(e) => {
+    console.log(roundPlay("paper",computerChoice));
+});
+
+const scissorsButton = document.querySelector(".scissors");
+scissorsButton.addEventListener("click",(e) => {
+    console.log(roundPlay("scissors",computerChoice));
+});
