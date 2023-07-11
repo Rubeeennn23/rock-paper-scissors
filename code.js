@@ -12,10 +12,14 @@ let playerChoice = playerChoiceCase.toLowerCase();*/
 
 
 
-
 // 3 - Write a function that plays a single round of the game, the function should have 2 parameters: playerSelection and computerSelection
 
-function roundPlay (playerChoice,computerChoice) {
+function roundPlay(e,playerChoice,computerChoice) {
+    playerChoice =  e.target.className;
+    computerChoice = getComputerChoice();
+    let winSentence = `You win, ${playerChoice} wins ${computerChoice}`;
+    let looseSentence = `You loose, ${computerChoice} wins ${playerChoice}`;
+    let drawSentence = `Try again, both showed ${computerChoice}`;
     if (playerChoice === "rock" & computerChoice === "scissors") {
         roundSentence = winSentence
         playerCount ++
@@ -40,11 +44,8 @@ function roundPlay (playerChoice,computerChoice) {
         computerCount ++
     } else {
         roundSentence = drawSentence
-    } return {
-        roundSentence,
-        playerCount,
-        computerCount
-    }
+    } return div.textContent = `${roundSentence}: Player ${playerCount} vs Computer ${computerCount}`
+    
 };
 
 // 4 - Write a new function called game(). Use the previous function inside of this one to play a 5 round game that keeps the score an reports a winner and looser at the end
@@ -102,22 +103,35 @@ function roundPlay (playerChoice,computerChoice) {
 console.log(game()); */
 
 const choice = ["rock","paper","scissors"];
-let computerChoice = getComputerChoice();
-let playerChoice='';
-let winSentence = `You win, ${playerChoice} wins ${computerChoice}`;
-let looseSentence = `You loose, ${computerChoice} wins ${playerChoice}`;
-let drawSentence = `Try again, both showed ${playerChoice}`;
+let computerChoice;
+let playerChoice;
 let roundSentence;
 let playerCount = 0;
 let computerCount = 0;
 let roundResult;
 
+
 const rockButton = document.querySelector(".rock");
-rockButton.addEventListener("click",(e) => {
-    return console.log(roundPlay("rock",computerChoice));
-});
+rockButton.addEventListener("click", roundPlay);
 
 const paperButton = document.querySelector(".paper");
+paperButton.addEventListener("click", roundPlay); 
+
+const scissorsButton = document.querySelector(".scissors");
+scissorsButton.addEventListener("click", roundPlay); 
+
+const div = document.querySelector("div");
+
+
+
+ 
+
+
+/*function getPlayerChoice(playerChoice) {
+    playerChoice += rockButton.className;
+    return playerChoice;
+};*/
+/*const paperButton = document.querySelector(".paper");
 paperButton.addEventListener("click",(e) => {
     console.log(roundPlay("paper",computerChoice));
 });
@@ -125,4 +139,4 @@ paperButton.addEventListener("click",(e) => {
 const scissorsButton = document.querySelector(".scissors");
 scissorsButton.addEventListener("click",(e) => {
     console.log(roundPlay("scissors",computerChoice));
-});
+});*/
